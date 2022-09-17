@@ -1,0 +1,31 @@
+{% extends 'base.html'%}
+
+{% block header %}
+<h1>{%block title%}Deleted{% endblock %}</h1>
+{% endblock %}
+
+{%block content%}
+<h3>Here check all the URL's deleted from your account</h3>
+<table class="table table-hover table-dark">
+    <thead>
+        <tr>
+            <!-- Your Columns HERE -->
+            <th scope="col">ID</th>
+            <th scope="col">URL</th>
+            <th scope="col">Status</th>
+            <th scope="col">TIME</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Your rows inside the table HERE: -->
+        {% for book in books %}
+            {%if g.user['id'] == book['author_id']%}
+                <tr>
+                    <td>{{ book.id }}</td>
+                    <td>{{ book.urlString }}</td>
+                    <td>{{ book.stat }}</td>
+                    <td>{{ book.created }}</td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+{% endblock %}

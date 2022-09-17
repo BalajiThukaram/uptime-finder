@@ -1,0 +1,29 @@
+{% extends 'base.html'%}
+
+{% block header %}
+<h1>{%block title%}Single URL Status{% endblock %}</h1>
+{% endblock %}
+
+{%block content%}
+<h3>Here check all the URL's statuses from your account</h3>
+<table class="table table-hover table-dark">
+    <thead>
+        <tr>
+            <!-- Your Columns HERE -->
+            <th scope="col">ID</th>
+            <th scope="col">URL</th>
+            <th scope="col">Status</th>
+            <th scope="col">TIME</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Your rows inside the table HERE: -->
+        {% for list in lists %}
+                <tr>
+                    <td>{{ list.id }}</td>
+                    <td>{{ list.urlString }}</td>
+                    <td>{{ list.stat }}</td>
+                    <td>{{ list.created }}</td>
+                </tr>
+        {% endfor %}
+{% endblock %}

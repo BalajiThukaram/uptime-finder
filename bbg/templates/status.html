@@ -1,0 +1,34 @@
+{% extends 'base.html'%}
+
+{% block header %}
+<h1>{%block title%}Status{% endblock %}</h1>
+{% endblock %}
+
+{%block content%}
+<h3>Here check all the URL's added from your account</h3>
+<table class="table table-hover table-dark">
+    <thead>
+        <tr>
+            <!-- Your Columns HERE -->
+            <th scope="col">ID</th>
+            <th scope="col">Username</th>
+            <th scope="col">URL</th>
+            <th scope="col">Status</th>
+            <th scope="col">TIME</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Your rows inside the table HERE: -->
+        {% for last in lasts %}
+            {%if g.user['id'] == last['author_id']%}
+                <tr>
+                    <td>{{ last.id }}</td>
+                    <td>{{ last.username }}</td>
+                    <td>{{ last.urlString }}</td>
+                    <td>{{ last.stat }}</td>
+                    <td>{{ last.created }}</td>
+                    <td><a href="{{url_for('func.final')}}">More Info</a></td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+{% endblock %}
