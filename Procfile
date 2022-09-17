@@ -1,0 +1,1 @@
+web: gunicorn bbg/__init__:app
